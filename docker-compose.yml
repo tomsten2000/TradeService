@@ -1,0 +1,23 @@
+version: '3.4'
+
+networks:
+    myAppNetwork:
+
+
+services:
+  tradeservice:
+    image: ${DOCKER_REGISTRY-}tradeservice
+    mem_limit: 512M
+    build:
+      context: .
+      dockerfile: TradeService/Dockerfile
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    mem_limit: 512M
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq

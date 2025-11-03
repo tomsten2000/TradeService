@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "InventorySerivce.Models.Protobufs";
+
+message SendTradeDto{
+	int32 tradeId = 1;
+	int64 userId = 2;
+	int64 botId = 3;
+	repeated SendTradeItemDto items = 4;
+}
+
+message SendTradeItemDto{
+	int32 skinId = 1;
+	int64 itemSteamId = 2;
+}
